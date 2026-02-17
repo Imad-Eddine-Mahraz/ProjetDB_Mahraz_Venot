@@ -67,28 +67,22 @@ Adresse e-mail de contact	Alphanumérique	100
 Date de naissance du client	Date	10
 Numéro de téléphone mobile client	Numérique	10
 Rue et numéro du domicile client	Alphanumérique	150
-Code postal	Alphanumérique	5
 Ville de résidence	Alphanumérique	50
 Numéro unique de l'inscription	Numérique	10
-Date de signature du contrat	Date	10
 Date de fin de validité de l'abonnement	Date	10
 Montant TTC de l'inscription	Décimal	7
 Libellé de l'offre (ex: Gold, Duo)	Alphanumérique	30
-Statut du paiement (Payé/En attente)	Alphanumérique	15
 Identifiant unique du coach	Numérique	5
 Nom du coach	Alphanumérique	50
 Prénom du coach	Alphanumérique	50
 Téléphone professionnel du coach	Numérique	10
 Spécialité sportive principale	Alphanumérique	40
-Diplôme ou certification du coach	Alphanumérique	100
 Date de la séance de coaching	Date	10
 Heure de début de la séance	Heure	5
 Durée de la séance (en minutes)	Numérique	3
-Objectif de la séance (ex: Prise de masse)	Alphanumérique	100
 Adresse physique de la salle	Alphanumérique	200
 Nom de l'entreprise propriétaire	Alphanumérique	50
 Numéro de téléphone de l'accueil	Numérique	10
 Capacité maximale de la salle (personnes)	Numérique	4
 Surface de la salle (en m²)	Numérique	5
 Nombre de machines disponibles	Numérique	3
-Horaires d'ouverture (format texte)	Alphanumérique	100
