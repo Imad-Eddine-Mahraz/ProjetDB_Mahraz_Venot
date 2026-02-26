@@ -86,3 +86,6 @@ Numéro de téléphone de l'accueil	Numérique	10
 Capacité maximale de la salle (personnes)	Numérique	4
 Surface de la salle (en m²)	Numérique	5
 Nombre de machines disponibles	Numérique	3
+
+<img width="711" height="568" alt="image" src="https://github.com/user-attachments/assets/3dd544d9-428d-4e5e-bbfb-a70c65a3feb2" />
+
