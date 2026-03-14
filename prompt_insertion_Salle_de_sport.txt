@@ -1,0 +1,114 @@
+Rôle : Tu es un expert en bases de données MySQL.
+
+Contexte : Je développe une base de données pour une salle de sport nommée "Projet Salle". J'ai déjà créé la structure des tables et les contraintes. Je dois maintenant remplir la base avec des données de test réalistes.
+
+Objectif : Générer un script SQL d'insertion (INSERT INTO) pour les tables suivantes : Salle_de_sport, Client, Entraineur, Casier, Activité, Inscription, Faire, Seance_Coaching et Planifier.
+
+Consignes de génération :
+
+Quantité : Génère au moins 20 lignes par table.
+
+Réalisme : Utilise des noms, prénoms, emails et numéros de téléphone (format français) réalistes.
+
+Intégrité référentielle : Assure-toi que les clés étrangères correspondent bien aux clés primaires générées (ex: un c_Num dans la table Faire doit exister dans la table Client).
+
+Logique métier : >    - Les dates d'expiration des inscriptions doivent être postérieures aux dates d'inscription.
+
+Les séances de coaching doivent se dérouler à des dates cohérentes.
+
+Le montant des offres doit être positif.
+
+Format : Donne-moi uniquement le code SQL, prêt à être exécuté dans MySQL Workbench.
+
+Structure des tables (DDL) :
+CREATE TABLE Client(
+   c_Num INT,
+   c_Nom VARCHAR(50),
+   c_Prenom VARCHAR(50),
+   c_Mail VARCHAR(50),
+   c_Date_Naissance DATE,
+   c_Num_Tel VARCHAR(15),
+   c_Adresse VARCHAR(50),
+   c_Montant_Offre_ VARCHAR(50),
+   c_Libellé_Offre VARCHAR(50),
+   c_Num_1 INT,
+   PRIMARY KEY(c_Num),
+   FOREIGN KEY(c_Num_1) REFERENCES Client(c_Num)
+);
+
+CREATE TABLE Entraineur(
+   e_ID INT,
+   e_Nom VARCHAR(50),
+   e_Prenom VARCHAR(50),
+   e_Num_Tel INT,
+   e_Specialité VARCHAR(50),
+   PRIMARY KEY(e_ID)
+);
+
+CREATE TABLE Salle_de_sport(
+   s_ID VARCHAR(50),
+   s_Entreprise_ VARCHAR(50),
+   s_Adresse VARCHAR(50),
+   s_Surface_ DOUBLE,
+   s_Nombre_Machine INT,
+   s_Num_Tel VARCHAR(15),
+   s_Capacité_Max INT,
+   PRIMARY KEY(s_ID)
+);
+
+CREATE TABLE Casier(
+   s_ID VARCHAR(50),
+   c_Num INT,
+   C_volume VARCHAR(50),
+   PRIMARY KEY(s_ID, c_Num),
+   FOREIGN KEY(s_ID) REFERENCES Salle_de_sport(s_ID)
+);
+
+CREATE TABLE Activité(
+   a_nom VARCHAR(50),
+   a_Capacité_Max INT,
+   PRIMARY KEY(a_nom)
+);
+
+CREATE TABLE Inscription(
+   i_Num SMALLINT,
+   i_Date DATE,
+   i_Date_Expiration DATE,
+   i_Prix DECIMAL(15,2),
+   s_ID VARCHAR(50) NOT NULL,
+   PRIMARY KEY(i_Num),
+   FOREIGN KEY(s_ID) REFERENCES Salle_de_sport(s_ID)
+);
+
+CREATE TABLE Faire(
+   c_Num INT,
+   i_Num SMALLINT,
+   PRIMARY KEY(c_Num, i_Num),
+   FOREIGN KEY(c_Num) REFERENCES Client(c_Num),
+   FOREIGN KEY(i_Num) REFERENCES Inscription(i_Num)
+);
+
+CREATE TABLE Seance_Coaching(
+   c_Num INT,
+   e_ID INT,
+   Date_séance DATE,
+   Heure_séance TIME,
+   PRIMARY KEY(c_Num, e_ID),
+   FOREIGN KEY(c_Num) REFERENCES Client(c_Num),
+   FOREIGN KEY(e_ID) REFERENCES Entraineur(e_ID)
+);
+
+CREATE TABLE Planifier(
+   c_Num INT,
+   e_ID INT,
+   s_ID VARCHAR(50),
+   a_nom VARCHAR(50),
+   Date_ DATE,
+   Heure TIME,
+   Duree INT,
+   PRIMARY KEY(c_Num, e_ID, s_ID, a_nom),
+   FOREIGN KEY(c_Num) REFERENCES Client(c_Num),
+   FOREIGN KEY(e_ID) REFERENCES Entraineur(e_ID),
+   FOREIGN KEY(s_ID) REFERENCES Salle_de_sport(s_ID),
+   FOREIGN KEY(a_nom) REFERENCES Activité(a_nom)
+);
