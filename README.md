@@ -89,3 +89,32 @@ Nombre de machines disponibles	Numérique	3
 
 <img width="711" height="568" alt="image" src="https://github.com/user-attachments/assets/3dd544d9-428d-4e5e-bbfb-a70c65a3feb2" />
 
+
+
+-------------------
+PARTIE II
+-------------------
+
+MLD: 
+Client = (c_Num INT, c_Nom VARCHAR(50), c_Prenom VARCHAR(50), c_Mail VARCHAR(50), c_Date_Naissance DATE, c_Num_Tel VARCHAR(15), c_Adresse VARCHAR(50), c_Montant_Offre_ VARCHAR(50), c_Libellé_Offre VARCHAR(50), #c_Num_1*);
+Entraineur = (e_ID INT, e_Nom VARCHAR(50), e_Prenom VARCHAR(50), e_Num_Tel INT, e_Specialité VARCHAR(50));
+Salle_de_sport = (s_ID VARCHAR(50), s_Entreprise_ VARCHAR(50), s_Adresse VARCHAR(50), s_Surface_ DOUBLE, s_Nombre_Machine INT, s_Num_Tel VARCHAR(15), s_Capacité_Max INT);
+Casier = (#s_ID, c_Num INT, C_volume VARCHAR(50));
+Activité = (a_nom VARCHAR(50), a_Capacité_Max INT);
+Inscription = (i_Num SMALLINT, i_Date DATE, i_Date_Expiration DATE, i_Prix DECIMAL(15,2), #s_ID);
+Faire = (#c_Num, #i_Num);
+Seance_Coaching = (#c_Num, #e_ID, Date_séance DATE, Heure_séance TIME);
+Planifier = (#c_Num, #e_ID, #s_ID, #a_nom, Date_ DATE, Heure TIME, Duree INT);
+
+
+SCENARIO D'USAGE:
+Le scénario se place du point de vue du gérant du réseau au mois de Mars. Après le pic d'inscriptions de début d'année, l'activité connaît une légère stagnation. La base de données est ici utilisée comme un outil de pilotage stratégique pour :
+
+-Fidéliser les clients les plus rentables (Offres Gold/Premium).
+
+-Analyser la répartition géographique pour optimiser la communication.
+
+-Réorganiser les plannings de coaching pour améliorer la satisfaction client.
+
+-Relancer les membres inactifs n'ayant jamais bénéficié de coaching personnalisé.
+
